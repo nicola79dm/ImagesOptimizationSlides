@@ -1,0 +1,627 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/league.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown>
+					<textarea data-template>
+						## Un'immagine vale più di mille righe di codice
+						FullStackConf 2019<br>
+						Nicola Della Marina
+					</textarea>
+				</section>
+				<section>
+					<h2>Come fare un box con gli angoli arrotondati?</h2>
+					<img src="assets/radius-box.jpg"/>
+				</section>
+				<section data-background-image="assets/NOTSUREIF.jpg"></section>
+				<section>
+					<div class="my-box"></div>
+					<style>
+					.my-box {
+					width: 400px;
+					height: 400px;
+					margin: 0 auto;
+					background-color: #f30;
+					border-radius: 30px;
+					box-shadow: 0 0 10px 1px #080808;
+					}</style>
+				</section>
+				<section>
+						<pre><code data-trim data-noescape>
+							border-radius: 30px;
+							box-shadow: 0 0 10px 1px #080808;
+						</code></pre>
+				</section>
+				<section>
+					<blockquote style="text-align: left">
+						&ldquo;The fastest and best-optimized resource is a resource not sent.&rdquo;<br>
+						<small>Ilya Grigorik</small>
+					</blockquote>
+				</section>
+				<section>
+					<img src="assets/obvious.jpg"/>
+				</section>
+				<section>
+					<h2>Immagini Responsive</h2>
+				</section>
+				<section>
+					<pre><code data-trim data-noescape>
+							img {
+								max-width: 100%;
+								height: auto;
+							}
+						</code></pre>
+				</section>
+				<section>
+					<div class="resizing">
+						<h3>Fluid Image</h3>
+						<img src="assets/NOTSUREIF.jpg" style="max-width: calc(100% - 20px); height: auto"/>
+						<p>This image's size is defined by CSS</p>
+					</div>
+					<style>
+						.resizing {
+							width:600px;
+							height: 600px;
+							margin: 0 auto;
+							animation: resize 5s infinite;
+
+							border: 5px solid silver;
+							padding: 10px;
+							border-radius: 5px;
+						}
+						@keyframes resize {
+							0% {
+								width: 600px;
+							}
+							50% {
+								width: 300px;
+							}
+							100% {
+								width: 600px;
+							}
+							}
+					</style>
+				</section>
+				<section>
+					<h2>Srcset</h2>
+					<p>
+						<pre><code data-trim data-line-numbers="2-5">
+							<img src="assets/srcset_150w.jpg
+								" srcset="assets/srcset_800w.jpg 800w,
+										assets/srcset_400w.jpg 400w,
+										assets/srcset_200w.jpg 200w,
+										assets/srcset_150w.jpg 150w" />
+						</code></pre>
+					</p>
+				</section>
+				<section>
+					<h2>800px</h2>
+					<iframe class="framer" src="frames/srcset.html" width="800" height="400"></iframe>
+					<style>
+						.framer {
+							border: 5px solid silver;
+							padding: 10px;
+							border-radius: 5px;
+						}
+					</style>
+				</section>
+				<section>
+					<h2>400px</h2>
+					<iframe class="framer" src="frames/srcset.html" width="400" height="400"></iframe>
+				</section>
+				<section>
+					<h2>200px / 150px</h2>
+					<div style="display: flex; justify-content: space-evenly">
+						<iframe class="framer" src="frames/srcset.html" width="200" height="400"></iframe>
+						<iframe class="framer" src="frames/srcset.html" width="150" height="400"></iframe>
+					</div>
+				</section>
+				<section>
+					<pre><code data-trim data-line-numbers="1,7">
+						<div style="width: 200px">
+								<img src="assets/srcset_150w.jpg
+								" srcset="assets/srcset_800w.jpg 800w,
+									assets/srcset_400w.jpg 400w,
+									assets/srcset_200w.jpg 200w,
+									assets/srcset_150w.jpg 150w" />
+						</div>
+					</code></pre>
+				</section>
+				<section>
+					<h2>200px col</h2>
+					<iframe class="framer" src="frames/srcset2.html" width="800" height="400"></iframe>
+				</section>
+				<section>
+					<h2>Srcset + sizes</h2>
+					<pre><code class="html" data-trim data-line-numbers="6">
+							<img src="assets/srcset_150w.jpg
+							"
+							srcset="assets/srcset_800w.jpg 800w,
+								assets/srcset_400w.jpg 400w,
+								assets/srcset_200w.jpg 200w,
+								assets/srcset_150w.jpg 150w
+								" 
+							sizes="(min-width: 768px) 200px" />
+					</code></pre>
+				</section>
+				<section>
+					<h2>200px col (sizes ON)</h2>
+					<iframe class="framer" src="frames/srcset3.html" width="800" height="400"></iframe>
+				</section>
+				<section>
+					<iframe class="framer resizing" src="frames/srcset4.html" height="400"></iframe>
+				</section>
+				<section>
+					<img src="assets/picture_lg.jpg" />
+				</section>
+				<section>
+					<div style="width: 300px; margin: 0 auto">
+						<img src="assets/picture_lg.jpg" />
+					</div>
+				</section>
+				<section>
+					<div style="width: 300px; margin: 0 auto">
+						<img src="assets/picture_sm.jpg" />
+					</div>
+				</section>
+				<section>
+					<pre><code data-trim>
+						<picture>
+							<source media="(min-width: 380px)" srcset="assets/picture_lg.jpg">
+							<img src="assets/picture_sm.jpg" alt="Picture example">
+						</picture>
+					</code></pre>
+				</section>
+				<section>
+					<iframe class="framer resizing" src="frames/picture.html" height="400"></iframe>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## Nuovi formati immagine
+						- WebP
+						- JPEG 2000
+						- JPEG XR
+					</textarea>
+				</section>
+				<section data-background-iframe="https://caniuse.com/#feat=webp" data-background-interactive>
+				</section>
+				<section data-background-iframe="https://caniuse.com/#feat=jpegxr" data-background-interactive>
+				</section>
+				<section data-background-iframe="https://caniuse.com/#feat=jpeg2000" data-background-interactive>
+				</section>
+				<section>
+					<pre><code data-trim data-line-numbers="2">
+						<picture>
+							<source type="image/webp" srcset="assets/picture_sm.webp"> 
+							<img src="assets/picture_sm.jpg" alt="Picture example">
+						</picture>
+					</code></pre>
+				</section>
+				<section>
+					<h2>Image Lazy Load</h2>
+				</section>
+				<section>
+					<div class="framer" style="width: 400px; margin: 0 auto; position: relative">
+						<div class="images-grid">
+							<img src="assets/flower1.jpg">
+							<img src="assets/flower2.jpg">
+							<img src="assets/flower3.jpg">
+							<img src="assets/flower1.jpg">
+							<img src="assets/flower2.jpg">
+							<img src="assets/flower3.jpg">
+						</div>
+						<div class="tendina fragment fade-in"></div>
+					</div>
+					<style>
+						.images-grid {
+							display: grid;
+							grid-template-columns: 1fr 1fr;
+							grid-gap: 10px;
+							justify-content: center;
+						}
+						.tendina {
+							position: absolute;
+							bottom: 0;
+							left: 0;
+							width: 100%;
+							height: 66%;
+							background-color: rgba(0,0,0,.5);
+							border-top: 5px dashed silver;
+						}
+					</style>
+				</section>
+				<section>
+						<div class="framer" style="width: 400px; margin: 0 auto; position: relative">
+							<div class="images-grid">
+								<img src="assets/flower1.jpg">
+								<img src="assets/flower2.jpg">
+								<img src="assets/placeholder.jpg">
+								<img src="assets/placeholder.jpg">
+								<img src="assets/placeholder.jpg">
+								<img src="assets/placeholder.jpg">
+							</div>
+							<div class="tendina"></div>
+						</div>
+				</section>
+				<section>
+					<h2>Intersection Observer API</h2>
+				</section>
+				<section>
+					<pre><code data-trim>
+						<img src="assets/flower1.jpg" />
+					</code></pre>
+					<pre class="fragment fade-in"><code data-trim>
+						<img src="assets/placeholder.jpg" class="lazy" x-data-src="assets/flower1.jpg"/>
+					</code></pre>
+				</section>
+				<section>
+					<pre><code data-trim data-line-numbers="1-9">
+						let lazyImageObserver = new IntersectionObserver((entries, observer) => {
+							entries.forEach(entry => {
+								if (entry.isIntersecting) {
+									let loadImage = entry.target;
+									loadImage.src = image.dataset.src;
+									lazyImageObserver.unobserve(loadImage);
+								}
+							})
+						})
+					</code></pre>
+					<pre class="fragment fade-in"><code data-trim>
+						lazyImageObserver.observe(element);
+					</code></pre>
+				</section>
+				<section data-transition="fade-out">
+					<pre><code data-trim data-line-numbers="1">
+						let lazyImageObserver = new IntersectionObserver((entries, observer) => {
+							entries.forEach(entry => {
+								if (entry.isIntersecting) {
+									let loadImage = entry.target;
+									loadImage.src = image.dataset.src;
+									lazyImageObserver.unobserve(loadImage);
+								}
+							})
+						})
+					</code></pre>		
+				</section>
+				<section data-transition="fade-in fade-out">
+					<pre><code data-trim data-line-numbers="2">
+						let lazyImageObserver = new IntersectionObserver((entries, observer) => {
+							entries.forEach(entry => {
+								if (entry.isIntersecting) {
+									let loadImage = entry.target;
+									loadImage.src = image.dataset.src;
+									lazyImageObserver.unobserve(loadImage);
+								}
+							})
+						})
+					</code></pre>		
+				</section>
+				<section data-transition="fade-in fade-out">
+					<pre><code data-trim data-line-numbers="3">
+						let lazyImageObserver = new IntersectionObserver((entries, observer) => {
+							entries.forEach(entry => {
+								if (entry.isIntersecting) {
+									let loadImage = entry.target;
+									loadImage.src = image.dataset.src;
+									lazyImageObserver.unobserve(loadImage);
+								}
+							})
+						})
+					</code></pre>		
+				</section>
+				<section data-transition="fade-in fade-out">
+					<pre><code data-trim data-line-numbers="4-5">
+						let lazyImageObserver = new IntersectionObserver((entries, observer) => {
+							entries.forEach(entry => {
+								if (entry.isIntersecting) {
+									let loadImage = entry.target;
+									loadImage.src = image.dataset.src;
+									lazyImageObserver.unobserve(loadImage);
+								}
+							})
+						})
+					</code></pre>		
+				</section>
+				<section data-transition="fade-in">
+					<pre><code data-trim data-line-numbers="6">
+						let lazyImageObserver = new IntersectionObserver((entries, observer) => {
+							entries.forEach(entry => {
+								if (entry.isIntersecting) {
+									let loadImage = entry.target;
+									loadImage.src = image.dataset.src;
+									lazyImageObserver.unobserve(loadImage);
+								}
+							})
+						})
+					</code></pre>		
+				</section>
+				<section>
+					<pre><code data-trim>
+						if ("IntersectionObserver" in window) {
+							let lazyImageObserver ...
+						} else {
+							// Fallback
+						}
+					</code></pre>
+				</section>
+				<section>
+					<h2>lazySizes</h2>
+					<p>https://afarkas.github.io/lazysizes/index.html</p>
+				</section>
+				<section>
+					<h2>Vector vs Raster Images</h2>
+				</section>
+				<section>
+					<pre><code data-trim>
+						<img src="assets/icon.svg" width="150px" />
+						<img src="assets/icon.svg" width="300px" />
+						<img src="assets/icon.svg" width="600px" />
+					</code></pre>
+				</section>
+				<section>
+					<img src="assets/icon.svg" width="150px" />
+					<img src="assets/icon.svg" width="300px" />
+					<img src="assets/icon.svg" width="600px" />
+				</section>
+				<section>
+					<pre><code class="svg" data-trim>
+						<?xml version="1.0" encoding="UTF-8"?>
+						<!-- Generator: Adobe Illustrator 20.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+						<svg version="1.1" id="Pokéball" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 595.3 594.1" style="enable-background:new 0 0 595.3 594.1;" xml:space="preserve">
+						<style type="text/css">
+							.st0{fill:#FFFFFF;}
+							.st1{fill:#DFDFDF;}
+							.st2{fill:#FF1C1C;}
+							.st3{fill:#DF1818;}
+						</style>
+						<g id="Pokéball_1_">
+							<g id="Colours">
+								<path id="Down" class="st0" d="[...]"/>
+								<path id="Shadow_Down" class="st1" d="[...]"/>
+								<path id="Center" class="st0" d="[...]"/>
+								<path id="Up" class="st2" d="[...]"/>
+								<path id="Shadow_Up" class="st3" d="[...]"/>
+							</g>
+							<path id="Line" d="[...]"/>
+						</g>
+						</svg>
+					</code></pre>
+				</section>
+				<section>
+					<h2>Inline SVG</h2>
+					<pre><code class="svg" data-trim>
+						<svg aria-hidden="true" focusable="false" data-prefix="far" 
+							data-icon="check-circle" class="svg-inline--fa fa-check-circle fa-w-16" 
+							role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+							<path class="iconColor" fill="currentColor" d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 48c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m140.204 130.267l-22.536-22.718c-4.667-4.705-12.265-4.736-16.97-.068L215.346 303.697l-59.792-60.277c-4.667-4.705-12.265-4.736-16.97-.069l-22.719 22.536c-4.705 4.667-4.736 12.265-.068 16.971l90.781 91.516c4.667 4.705 12.265 4.736 16.97.068l172.589-171.204c4.704-4.668 4.734-12.266.067-16.971z"></path>
+						</svg>
+					</code></pre>
+				</section>
+				<section>
+					<svg aria-hidden="true" focusable="false" data-prefix="far" 
+						data-icon="check-circle" class="svg-inline--fa fa-check-circle fa-w-16" 
+						role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="300px" height="300px">
+						<path fill="currentColor" d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 48c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m140.204 130.267l-22.536-22.718c-4.667-4.705-12.265-4.736-16.97-.068L215.346 303.697l-59.792-60.277c-4.667-4.705-12.265-4.736-16.97-.069l-22.719 22.536c-4.705 4.667-4.736 12.265-.068 16.971l90.781 91.516c4.667 4.705 12.265 4.736 16.97.068l172.589-171.204c4.704-4.668 4.734-12.266.067-16.971z"></path>
+					</svg>
+				</section>
+				<section>
+					<pre><code data-trim>
+						.iconColor {
+							fill: yellow;
+						}
+					</code></pre>
+				</section>
+				<section>
+					<svg aria-hidden="true" focusable="false" data-prefix="far" 
+						data-icon="check-circle" class="svg-inline--fa fa-check-circle fa-w-16" 
+						role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="300px" height="300px">
+						<path class="iconColor3" fill="currentColor" d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 48c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m140.204 130.267l-22.536-22.718c-4.667-4.705-12.265-4.736-16.97-.068L215.346 303.697l-59.792-60.277c-4.667-4.705-12.265-4.736-16.97-.069l-22.719 22.536c-4.705 4.667-4.736 12.265-.068 16.971l90.781 91.516c4.667 4.705 12.265 4.736 16.97.068l172.589-171.204c4.704-4.668 4.734-12.266.067-16.971z"></path>
+					</svg>
+					<style>
+						.iconColor3 {
+							fill: yellow;
+						}
+					</style>
+				</section>
+				<section>
+						<pre><code data-trim>
+							.iconColor {
+								fill: transparent;
+								stroke: yellow;
+								stroke-width: 5px;
+							}
+						</code></pre>
+					</section>
+				<section>
+					<svg aria-hidden="true" focusable="false" data-prefix="far" 
+						data-icon="check-circle" class="svg-inline--fa fa-check-circle fa-w-16" 
+						role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="300px" height="300px">
+						<path id="iconColor" fill="currentColor" d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 48c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m140.204 130.267l-22.536-22.718c-4.667-4.705-12.265-4.736-16.97-.068L215.346 303.697l-59.792-60.277c-4.667-4.705-12.265-4.736-16.97-.069l-22.719 22.536c-4.705 4.667-4.736 12.265-.068 16.971l90.781 91.516c4.667 4.705 12.265 4.736 16.97.068l172.589-171.204c4.704-4.668 4.734-12.266.067-16.971z"></path>
+					</svg>
+					<style>
+						#iconColor {
+							fill: transparent;
+							stroke-width: 5px;
+							stroke: yellow;
+						}
+					</style>
+				</section>
+				<section>
+					<svg class="iconAnimate" aria-hidden="true" focusable="false" data-prefix="far" 
+						data-icon="check-circle" class="svg-inline--fa fa-check-circle fa-w-16" 
+						role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="300px" height="300px">
+						<path class="iconColor2" fill="currentColor" d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 48c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m140.204 130.267l-22.536-22.718c-4.667-4.705-12.265-4.736-16.97-.068L215.346 303.697l-59.792-60.277c-4.667-4.705-12.265-4.736-16.97-.069l-22.719 22.536c-4.705 4.667-4.736 12.265-.068 16.971l90.781 91.516c4.667 4.705 12.265 4.736 16.97.068l172.589-171.204c4.704-4.668 4.734-12.266.067-16.971z"></path>
+					</svg>
+					<style>
+						@keyframes iconAnimate {
+							0% {
+								transform: scale(1);
+							}
+							25% {
+								transform: scale(2);
+							}
+							50% {
+								transform: scale(1);
+							}
+							75% {
+								transform: rotate(180deg);
+							}
+							100% {
+								transform: rotate(360deg);
+							}
+						}
+						@keyframes iconColor {
+							0% {
+								color: white
+							}
+							25% {
+								color: red;
+							}
+							50% {
+								color: yellow;
+							}
+							75% {
+								color: green;
+							}
+							100% {
+								color: white;
+							}
+						}
+						.iconAnimate {
+							animation: iconAnimate 5s infinite;
+						}
+						.iconColor2 {
+							animation: iconColor 5s infinite;
+						}
+					</style>
+				</section>
+				<section>
+					<h2>Symbols</h2>
+				</section>
+				<section>
+					<pre><code class="svg" data-trim>
+						<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+
+							<symbol id="ok" viewBox="0 0 512 512">
+								<path fill="currentColor" d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 48c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m140.204 130.267l-22.536-22.718c-4.667-4.705-12.265-4.736-16.97-.068L215.346 303.697l-59.792-60.277c-4.667-4.705-12.265-4.736-16.97-.069l-22.719 22.536c-4.705 4.667-4.736 12.265-.068 16.971l90.781 91.516c4.667 4.705 12.265 4.736 16.97.068l172.589-171.204c4.704-4.668 4.734-12.266.067-16.971z"></path>
+							</symbol>
+							
+							<symbol id="ko" viewBox="0 0 512 512">
+								<path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm101.8-262.2L295.6 256l62.2 62.2c4.7 4.7 4.7 12.3 0 17l-22.6 22.6c-4.7 4.7-12.3 4.7-17 0L256 295.6l-62.2 62.2c-4.7 4.7-12.3 4.7-17 0l-22.6-22.6c-4.7-4.7-4.7-12.3 0-17l62.2-62.2-62.2-62.2c-4.7-4.7-4.7-12.3 0-17l22.6-22.6c4.7-4.7 12.3-4.7 17 0l62.2 62.2 62.2-62.2c4.7-4.7 12.3-4.7 17 0l22.6 22.6c4.7 4.7 4.7 12.3 0 17z"></path>
+							</symbol>
+							
+						</svg>
+					</code></pre>
+					<pre class="fragment fade-in"><code data-trim>
+						<svg class="icon">
+							<use xlink:href="#ok" />
+						</svg>
+							
+						<svg class="icon">
+							<use xlink:href="#ko" />
+						</svg>
+					</code></pre>
+				</section>
+				<section>
+					<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+
+						<symbol id="ok" viewBox="0 0 512 512">
+							<path fill="currentColor" d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 48c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m140.204 130.267l-22.536-22.718c-4.667-4.705-12.265-4.736-16.97-.068L215.346 303.697l-59.792-60.277c-4.667-4.705-12.265-4.736-16.97-.069l-22.719 22.536c-4.705 4.667-4.736 12.265-.068 16.971l90.781 91.516c4.667 4.705 12.265 4.736 16.97.068l172.589-171.204c4.704-4.668 4.734-12.266.067-16.971z"></path>
+						</symbol>
+						
+						<symbol id="ko" viewBox="0 0 512 512">
+							<path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm101.8-262.2L295.6 256l62.2 62.2c4.7 4.7 4.7 12.3 0 17l-22.6 22.6c-4.7 4.7-12.3 4.7-17 0L256 295.6l-62.2 62.2c-4.7 4.7-12.3 4.7-17 0l-22.6-22.6c-4.7-4.7-4.7-12.3 0-17l62.2-62.2-62.2-62.2c-4.7-4.7-4.7-12.3 0-17l22.6-22.6c4.7-4.7 12.3-4.7 17 0l62.2 62.2 62.2-62.2c4.7-4.7 12.3-4.7 17 0l22.6 22.6c4.7 4.7 4.7 12.3 0 17z"></path>
+						</symbol>
+						
+					</svg>
+					<svg class="icon">
+						<use xlink:href="#ok" />
+					</svg>
+						
+					<svg class="icon">
+						<use xlink:href="#ko" />
+					</svg>
+					<style>
+						.icon:hover {
+							color: green;
+						}
+					</style>
+				</section>
+				<section>
+					<h2>Font Icons</h2>
+					<ul class="fragment fade-in">
+						<li>Fontello</li>
+						<li>IcoMoon</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Ricapitoliamo...</h2>
+					<ul>
+						<li class="fragment fade-in">
+							Responsive Images
+						</li>
+						<li class="fragment fade-in">
+							New File Formats
+						</li>
+						<li class="fragment fade-in">
+							Lazy Loading
+						</li>
+						<li class="fragment fade-in">
+							SVG Icons
+						</li>
+						<li class="fragment fade-in">
+							Don't use images <small>(when not needed)</small>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h1>Q&A</h1>
+				</section>
+				<section>
+					<h1>Thanks</h1>
+				</section>
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				],
+				hash: true,
+				width: "100%",
+			});
+		</script>
+	</body>
+</html>

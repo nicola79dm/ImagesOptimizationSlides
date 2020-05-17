@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <style>
+            img {max-width: 100%; height: auto}
+            div {border: 1px solid yellowgreen; border-radius: 5px; padding: 10px; height: 300px}
+            </style>
+    </head>
+    <body>
+        <div style="width: 200px">
+            <img src="../assets/srcset_150w.jpg"
+            srcset="../assets/srcset_800w.jpg 800w,
+            ../assets/srcset_400w.jpg 400w,
+            ../assets/srcset_200w.jpg 200w,
+            ../assets/srcset_150w.jpg 150w" 
+            sizes="(min-width: 768px) 200px" />
+        </div>
+    </body>
+</html>
